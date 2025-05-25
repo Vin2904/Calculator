@@ -1,0 +1,54 @@
+<section id="calculator-demo">
+  <h2>Live Calculator</h2>
+  <div style="max-width: 300px; margin: auto;">
+    <input id="display" style="width: 100%; height: 40px; font-size: 1.2em;" readonly />
+    <br /><br />
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px;">
+      <button onclick="press('7')">7</button>
+      <button onclick="press('8')">8</button>
+      <button onclick="press('9')">9</button>
+      <button onclick="press('/')">/</button>
+
+      <button onclick="press('4')">4</button>
+      <button onclick="press('5')">5</button>
+      <button onclick="press('6')">6</button>
+      <button onclick="press('*')">*</button>
+
+      <button onclick="press('1')">1</button>
+      <button onclick="press('2')">2</button>
+      <button onclick="press('3')">3</button>
+      <button onclick="press('-')">-</button>
+
+      <button onclick="press('0')">0</button>
+      <button onclick="press('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="press('+')">+</button>
+
+      <button onclick="clearDisplay()" style="grid-column: span 4; background: #e74c3c; color: white;">Clear</button>
+    </div>
+  </div>
+
+  <script>
+    let input = "";
+
+    function press(value) {
+      input += value;
+      document.getElementById("display").value = input;
+    }
+
+    function calculate() {
+      try {
+        input = eval(input).toString();
+        document.getElementById("display").value = input;
+      } catch {
+        document.getElementById("display").value = "Error";
+        input = "";
+      }
+    }
+
+    function clearDisplay() {
+      input = "";
+      document.getElementById("display").value = "";
+    }
+  </script>
+</section>
